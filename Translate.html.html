@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Translator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label, input, select, button {
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Language Translator</h1>
+    <form id="translator-form">
+        <label for="text">Text to Translate:</label>
+        <input type="text" id="text" name="text" required>
+
+        <label for="src_lang">Source Language Code:</label>
+        <input type="text" id="src_lang" name="src_lang" required>
+
+        <label for="dest_lang">Destination Language Code:</label>
+        <input type="text" id="dest_lang" name="dest_lang" required>
+
+        <button type="submit">Translate</button>
+    </form>
+    <h2>Translated Text:</h2>
+    <p id="translated-text"></p>
+    <script>
+        document.getElementById('translator-form').addEventListener('submit', function(e) {
+            e.preventDefault();        
+            const text = document.getElementById('text').value;
+            const src_lang = document.getElementById('src_lang').value;
+            const dest_lang = document.getElementById('dest_lang').value;
+            fetch('/translate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ text, src_lang, dest_lang }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('translated-text').textContent = data.translated_text;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>

@@ -8,6 +8,6 @@ You can now start using the translator.
 
 Requirements:
 
-latest python package
-Command prompt
-Basic knowledge of handling commands
+1. latest python package
+2. Command prompt
+3. Basic knowledge of handling commands

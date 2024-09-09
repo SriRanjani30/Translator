@@ -5,3 +5,9 @@ You can now start using the translator.
 
 [Latest Release](https://github.com/SriRanjani30/Translator/releases/latest)
 ![Screenshot (3519)](https://github.com/user-attachments/assets/361ae233-e962-4453-b9a7-27321da248ac)
+
+Requirements:
+
+latest python package
+Command prompt
+Basic knowledge of handling commands
